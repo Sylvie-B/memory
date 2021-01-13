@@ -11,3 +11,24 @@ html {
 body {
     width: 100%;
 }
+
+#game {
+    background-color: darkcyan;
+}
+
+#memo {
+    width: 90%;
+    margin: auto;
+}
+
+#themeFrame {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#themeFrame div {
+    width: 10em;
+    height: 15em;
+    border: 1px solid black;
+    border-radius: 15px;
+}
