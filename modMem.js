@@ -1,6 +1,6 @@
 export {Theme};
 
-let Theme = function (name, cardBack){
+let Theme = function (name){
 
     // for exemple LordOfTheRing
     this.name = name;
@@ -10,17 +10,21 @@ let Theme = function (name, cardBack){
         return themeArray.concat(themeArray);
     }
 
-    this.decor = function (background, color){
+    // set theme
+    this.setTheme = function (verso){
+        let frame = document.createElement('div');
+        frame.style.display = "flex";
+        let pict = document.createElement('img');
+        pict.src = verso;
+        let target = document.getElementById('theme');
+        target.appendChild(frame);
+        frame.appendChild(pict);
+    }
+
+    this.decor = function (background){
         // background img
         let back = document.getElementById('game');
         back.style.backgroundImage = background;
-        // set of theme
-        let frame = document.createElement('div');
-        let img = document.createElement('img');
-        img.scr = theme;
-        let target = document.getElementById('choice');
-        target.appendChild(frame);
-        frame.appendChild(img);
 
     }
 

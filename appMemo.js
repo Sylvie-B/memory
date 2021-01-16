@@ -30,12 +30,17 @@ let cardsOfLord = [
     'theme/lordOfRings/sam.png'
 ];
 
-let Lord = new Theme("Lord of memory", "theme/lordOfRings/middleEarth.jpg", "theme/lordOfRings/jrrT.png");
+let Lord = new Theme("Lord of memory");
+Lord.setTheme("theme/lordOfRings/jrrT.png");
 
-console.log(Lord.cards(cardsOfLord));
-console.log(Lord.cards(cardsOfLord)[0]);
+// if user choice Lord
 
-Lord.decor('theme/lordOfRings/middleEarth.jpg', );
+// Lord.cards(cardsOfLord);
+// console.log(Lord.cards(cardsOfLord)[0]);
+// Lord.decor("url('theme/lordOfRings/middleEarth.jpg')", "theme/lordOfRings/jrrT.png");
+
+
+
 
 // let frame = document.getElementById("theme").getElementsByTagName("div");
 //

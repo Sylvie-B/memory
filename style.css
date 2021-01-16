@@ -14,8 +14,10 @@ body {
 }
 
 #game {
-    background-color: darkcyan;
     font-size: 2vw;
+    background-color: darkcyan;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 #choice {
@@ -31,11 +33,9 @@ body {
 
 #theme div {
     margin: 1rem 1rem;
-    border-radius: 10px;
     width: 20rem;
     min-height: 25rem;
     justify-content: center;
-    background: darkslategrey;
 }
 
 #level {
