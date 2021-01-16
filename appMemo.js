@@ -1,3 +1,5 @@
+import {Theme} from './modMem.js';
+
 /** listen choices
  * change border color of chosen theme
  * change border color of chosen level
@@ -14,17 +16,25 @@
  * restart
  */
 
-let frame = document.getElementById("theme").getElementsByTagName("div");
+let carOfLord = [1, 2, 3];
 
-for(let i = 0; i < frame.length; i++){
-    let pict = document.createElement('img');
-    pict.src = 'theme/jrrT.png';
-    pict.style.width = '90%';
+let Lord = new Theme("Lord", "middleEarth", "jrrT.png");
 
-    frame[i].appendChild(pict);
-    frame[i].style.display = 'flex';
-    frame[i].style.justifyContent = 'center';
-    frame[i].style.alignItems = 'center';
+// Lord.cards(carOfLord);
+console.log(Lord.cards(carOfLord));
 
-}
-
+//
+// let frame = document.getElementById("theme").getElementsByTagName("div");
+//
+// for(let i = 0; i < frame.length; i++){
+//     let pict = document.createElement('img');
+//     pict.src = 'theme/jrrT.png';
+//     pict.style.width = '90%';
+//
+//     frame[i].appendChild(pict);
+//     frame[i].style.display = 'flex';
+//     frame[i].style.justifyContent = 'center';
+//     frame[i].style.alignItems = 'center';
+//
+// }
+//
