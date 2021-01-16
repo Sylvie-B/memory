@@ -15,12 +15,12 @@ body {
 
 #game {
     background-color: darkcyan;
+    font-size: 2vw;
 }
 
 #choice {
     width: 90%;
     margin: auto;
-    font-size: 2vw;
 }
 
 #memo, #theme, #level, #start {
@@ -30,8 +30,10 @@ body {
 }
 
 #theme div {
-    margin: 0 2px;
+    margin: 1rem 1rem;
     border-radius: 10px;
+    width: 20rem;
+    min-height: 25rem;
     justify-content: center;
     background: darkslategrey;
 }
@@ -46,5 +48,9 @@ body {
     width: 10%;
     border-radius: 5px;
     text-align: center;
+}
+
+#choiceN {
+    height: 3rem;
 }
 

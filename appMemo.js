@@ -16,14 +16,27 @@ import {Theme} from './modMem.js';
  * restart
  */
 
-let carOfLord = [1, 2, 3];
+let cardsOfLord = [
 
-let Lord = new Theme("Lord", "middleEarth", "jrrT.png");
+    'theme/lordOfRings/aragorn.png',
+    'theme/lordOfRings/boromir.png',
+    'theme/lordOfRings/eye.png',
+    'theme/lordOfRings/frodo.png',
+    'theme/lordOfRings/gandalf.png',
+    'theme/lordOfRings/gimli.png',
+    'theme/lordOfRings/legolas.png',
+    'theme/lordOfRings/pipinMerry.png',
+    'theme/lordOfRings/ring.png',
+    'theme/lordOfRings/sam.png'
+];
 
-// Lord.cards(carOfLord);
-console.log(Lord.cards(carOfLord));
+let Lord = new Theme("Lord of memory", "theme/lordOfRings/middleEarth.jpg", "theme/lordOfRings/jrrT.png");
 
-//
+console.log(Lord.cards(cardsOfLord));
+console.log(Lord.cards(cardsOfLord)[0]);
+
+Lord.decor('theme/lordOfRings/middleEarth.jpg', );
+
 // let frame = document.getElementById("theme").getElementsByTagName("div");
 //
 // for(let i = 0; i < frame.length; i++){
@@ -37,4 +50,4 @@ console.log(Lord.cards(carOfLord));
 //     frame[i].style.alignItems = 'center';
 //
 // }
-//
+
