@@ -6,6 +6,7 @@
 
 html {
     font-size: 62.5%;
+    font-family: sans-serif;
 }
 
 body {
@@ -16,19 +17,34 @@ body {
     background-color: darkcyan;
 }
 
-#memo {
+#choice {
     width: 90%;
+    margin: auto;
+    font-size: 2vw;
+}
+
+#memo, #theme, #level, #start {
+    padding: 1vh 1vw;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#theme div {
+    margin: 0 2px;
+    border-radius: 10px;
+    justify-content: center;
+    background: darkslategrey;
+}
+
+#level {
+    background-color: white;
     margin: auto;
 }
 
-#themeFrame {
-    display: flex;
-    flex-wrap: wrap;
+#level div {
+    background-color: darkslategrey;
+    width: 10%;
+    border-radius: 5px;
+    text-align: center;
 }
 
-#themeFrame div {
-    width: 10em;
-    height: 15em;
-    border: 1px solid black;
-    border-radius: 15px;
-}

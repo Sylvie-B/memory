@@ -14,3 +14,17 @@
  * restart
  */
 
+let frame = document.getElementById("theme").getElementsByTagName("div");
+
+for(let i = 0; i < frame.length; i++){
+    let pict = document.createElement('img');
+    pict.src = 'theme/jrrT.png';
+    pict.style.width = '90%';
+
+    frame[i].appendChild(pict);
+    frame[i].style.display = 'flex';
+    frame[i].style.justifyContent = 'center';
+    frame[i].style.alignItems = 'center';
+
+}
+
