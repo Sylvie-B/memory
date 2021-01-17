@@ -11,7 +11,7 @@ let Theme = function (name){
     }
 
     // set theme
-    this.setTheme = function (verso){
+    this.setTheme = function (verso, title){
         let frame = document.createElement('div');
         frame.style.display = "flex";
         let pict = document.createElement('img');
@@ -19,6 +19,11 @@ let Theme = function (name){
         let target = document.getElementById('theme');
         target.appendChild(frame);
         frame.appendChild(pict);
+
+        let choice = document.createElement('option');
+        choice.value = this.name;
+        choice.innerHTML = title;
+        document.getElementById('choiceT').appendChild(choice);
     }
 
     this.decor = function (background){

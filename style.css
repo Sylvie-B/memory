@@ -15,17 +15,20 @@ body {
 
 #game {
     font-size: 2vw;
+    padding: 1vh 1vw;
     background-color: darkcyan;
     background-size: cover;
     background-repeat: no-repeat;
 }
 
-#choice {
-    width: 90%;
-    margin: auto;
+#memo, #start {
+    background: black;
+    margin: 1vh 1vw;
+    color: white;
+    text-align: center;
 }
 
-#memo, #theme, #level, #start {
+#theme, #start {
     padding: 1vh 1vw;
     display: flex;
     justify-content: space-evenly;
@@ -38,19 +41,8 @@ body {
     justify-content: center;
 }
 
-#level {
-    background-color: white;
-    margin: auto;
+button, input, #choiceT {
+    margin: 0.5vw;
+    padding: 2px;
+    font-size: 2vw;
 }
-
-#level div {
-    background-color: darkslategrey;
-    width: 10%;
-    border-radius: 5px;
-    text-align: center;
-}
-
-#choiceN {
-    height: 3rem;
-}
-

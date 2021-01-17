@@ -9,19 +9,24 @@
 
     <div id="game">
         <div id="memo">
-            <div>Memory</div>
+            <h2>Memory</h2>
         </div>
         <div id="choice">
-            <p>choix du thème</p>
+<!--            pictures container-->
             <div id="theme"></div>
+
+            <label for="choiceT">choix du thème</label>
+            <select name="theme" id="choiceT"></select>
+
             <div id="level">
                 <label for="choiceN">choix du niveau</label>
                 <input id="choiceN" type="number" min="1" max="10">
             </div>
         </div>
         <div id="start">
-            <div>START</div>
+            <button>Start</button>
         </div>
+
     </div>
 
 <script src="appMemo.js" type="module"></script>

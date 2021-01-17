@@ -16,8 +16,8 @@ import {Theme} from './modMem.js';
  * restart
  */
 
+// create theme lord
 let cardsOfLord = [
-
     'theme/lordOfRings/aragorn.png',
     'theme/lordOfRings/boromir.png',
     'theme/lordOfRings/eye.png',
@@ -31,16 +31,20 @@ let cardsOfLord = [
 ];
 
 let Lord = new Theme("Lord of memory");
-Lord.setTheme("theme/lordOfRings/jrrT.png");
+Lord.setTheme("theme/lordOfRings/jrrT.png", 'Lord of memory');
+
+let theme = document.getElementById('theme').getElementsByTagName('div');
+
+let start = document.getElementById('start');
+start.addEventListener('click', function (){
+    //
+})
 
 // if user choice Lord
 
 // Lord.cards(cardsOfLord);
 // console.log(Lord.cards(cardsOfLord)[0]);
 // Lord.decor("url('theme/lordOfRings/middleEarth.jpg')", "theme/lordOfRings/jrrT.png");
-
-
-
 
 // let frame = document.getElementById("theme").getElementsByTagName("div");
 //
