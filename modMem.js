@@ -1,34 +1,32 @@
 export {Theme};
 
-let Theme = function (name){
+let Theme = function (title){
 
     // for exemple LordOfTheRing
-    this.name = name;
-
-    // array of pictures
-    this.cards = function (themeArray){
-        return themeArray.concat(themeArray);
-    }
+    this.name = title;
 
     // set theme
-    this.setTheme = function (verso, title){
-        let frame = document.createElement('div');
-        frame.style.display = "flex";
+    this.setTheme = function (verso, valueT, target){
+        let card = document.createElement('div');
+        card.className = 'screen1';
+        card.style.display = "flex";
         let pict = document.createElement('img');
         pict.src = verso;
-        let target = document.getElementById('theme');
-        target.appendChild(frame);
-        frame.appendChild(pict);
+        let frame = document.getElementById(target);
+        frame.appendChild(card);
+        card.appendChild(pict);
 
         let choice = document.createElement('option');
-        choice.value = this.name;
-        choice.innerHTML = title;
+        choice.value = valueT;
+        choice.innerHTML = this.name;
         document.getElementById('choiceT').appendChild(choice);
     }
 
-    this.decor = function (background){
+    this.decor = function (background, target, id){
+        let newTitle = document.getElementById(id);
+        newTitle.innerHTML = this.name;
         // background img
-        let back = document.getElementById('game');
+        let back = document.getElementById(target);
         back.style.backgroundImage = background;
 
     }

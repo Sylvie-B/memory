@@ -9,22 +9,28 @@
 
     <div id="game">
         <div id="memo">
-            <h2>Memory</h2>
+            <h2 id="newTitle">Memory</h2>
         </div>
-        <div id="choice">
+
+        <div id="display">
 <!--            pictures container-->
             <div id="theme"></div>
 
-            <label for="choiceT">choix du thème</label>
-            <select name="theme" id="choiceT"></select>
+            <div id="choice">
+                <div id="themeChoice">
+                    <label for="choiceT">choix du thème</label>
+                    <select name="theme" id="choiceT"></select>
+                </div>
 
-            <div id="level">
-                <label for="choiceN">choix du niveau</label>
-                <input id="choiceN" type="number" min="1" max="10">
+                <div id="level">
+                    <label for="choiceN">choix du niveau</label>
+                    <input id="choiceN" type="number" min="1" max="10" value="5">
+                </div>
             </div>
+
         </div>
         <div id="start">
-            <button>Start</button>
+            <button id="switchStart">Start</button>
         </div>
 
     </div>

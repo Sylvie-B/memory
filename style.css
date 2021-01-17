@@ -19,6 +19,13 @@ body {
     background-color: darkcyan;
     background-size: cover;
     background-repeat: no-repeat;
+
+}
+
+#game, #display {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 #memo, #start {
@@ -31,7 +38,9 @@ body {
 #theme, #start {
     padding: 1vh 1vw;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-evenly;
+
 }
 
 #theme div {

@@ -16,7 +16,13 @@ import {Theme} from './modMem.js';
  * restart
  */
 
-// create theme lord
+// get window
+let gameBoard = document.getElementById('game');
+gameBoard.style.height = window.innerHeight + 'px';
+
+let theme = document.getElementById('theme');
+
+// create theme lord    array of caracters + new theme + call
 let cardsOfLord = [
     'theme/lordOfRings/aragorn.png',
     'theme/lordOfRings/boromir.png',
@@ -31,32 +37,50 @@ let cardsOfLord = [
 ];
 
 let Lord = new Theme("Lord of memory");
-Lord.setTheme("theme/lordOfRings/jrrT.png", 'Lord of memory');
+Lord.setTheme("theme/lordOfRings/jrrT.png", 'Lord', 'theme');
 
-let theme = document.getElementById('theme').getElementsByTagName('div');
+// start
+let start = document.getElementById('switchStart');
 
-let start = document.getElementById('start');
+
 start.addEventListener('click', function (){
-    //
+    // get choices
+    let choiceT = document.getElementById('choiceT').value;
+    console.log(choiceT);
+    let choiceN = document.getElementById('choiceN').value;
+    console.log(choiceN);
+
+    // todo adapt decoration for theme choice
+    Lord.decor('url("theme/lordOfRings/middleEarth.jpg")', 'game', 'newTitle');
+
+    //  hidden choices screen
+    let close = document.getElementsByClassName('screen1');
+    for(let item of close){
+        item.remove();
+    }
+    document.getElementById('choice').style.display = 'none';
+    start.innerHTML = 'restart';
+    start.id = 'switchRestart';
+    // todo addEventListener(restart)
+
+
+
+    // choiceN loop * 2
+    for(let t = 0 ; t < 2 ; t++){
+        for(let i = 0; i < choiceN ; i++){
+            let frame = document.createElement('div');
+            let card = document.createElement('div');
+            card.className = 'toMix'
+            let face = document.createElement('img');
+
+            // get pict in array
+            face.src = cardsOfLord[i]
+
+            card.appendChild(face)
+            frame.appendChild(card);
+            theme.appendChild(frame);
+        }
+    }
+
+
 })
-
-// if user choice Lord
-
-// Lord.cards(cardsOfLord);
-// console.log(Lord.cards(cardsOfLord)[0]);
-// Lord.decor("url('theme/lordOfRings/middleEarth.jpg')", "theme/lordOfRings/jrrT.png");
-
-// let frame = document.getElementById("theme").getElementsByTagName("div");
-//
-// for(let i = 0; i < frame.length; i++){
-//     let pict = document.createElement('img');
-//     pict.src = 'theme/jrrT.png';
-//     pict.style.width = '90%';
-//
-//     frame[i].appendChild(pict);
-//     frame[i].style.display = 'flex';
-//     frame[i].style.justifyContent = 'center';
-//     frame[i].style.alignItems = 'center';
-//
-// }
-
