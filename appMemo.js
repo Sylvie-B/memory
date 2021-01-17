@@ -46,32 +46,31 @@ Lord.setTheme("theme/lordOfRings/jrrT.png", 'Lord', 'theme');
 let start = document.getElementById('switchStart');
 
 
-start.addEventListener('click', function (){
+start.addEventListener('click', function () {
+
     // get choices
     let choiceT = document.getElementById('choiceT').value;
-    console.log(choiceT);
     let choiceN = document.getElementById('choiceN').value;
-    console.log(choiceN);
 
     // todo adapt decoration for theme choice
     Lord.decor('url("theme/lordOfRings/middleEarth.jpg")', 'game', 'newTitle');
 
     //  hidden choices screen
-    let close = document.getElementsByClassName('screen1');
-    for(let item of close){
+    let screen1 = document.getElementsByClassName('screen1');
+    for (let item of screen1) {
         item.remove();
     }
     document.getElementById('choice').style.display = 'none';
     start.innerHTML = 'restart';
     start.id = 'switchRestart';
-    // todo addEventListener(restart)
+
 
     // array choiceN
     let newRef = ref.splice(0, choiceN);
     let allRef = newRef.concat(newRef);
     console.log(allRef);
 
-    for(let i = 0 ; i < allRef.length ; i++){
+    for (let i = 0; i < allRef.length; i++) {
         let r = Math.floor(Math.random() * i);
         let stock = allRef[i];
         allRef[i] = allRef[r];
@@ -81,19 +80,75 @@ start.addEventListener('click', function (){
 
 
     // allRef loop
-        for(let i = 0; i < allRef.length ; i++){
-            let frame = document.createElement('div');
-            let card = document.createElement('div');
-            card.className = 'toMix'
-            let face = document.createElement('img');
+    for (let i = 0; i < allRef.length; i++) {
+        let frame = document.createElement('div');
+        frame.style.position = 'relative';
+        let verso = document.createElement('div');
+        verso.className = 'verso';
+        verso.style.position = 'absolute';
+        verso.style.top = '0';
+        verso.style.left = '0';
+        verso.style.backgroundImage = "url('theme/lordOfRings/jrrT.png')";
+        verso.style.backgroundSize = 'cover';
+        let card = document.createElement('div');
+        card.className = 'Mix'
+        let face = document.createElement('img');
 
-            // get pict in array
-            face.src = cardsOfLord[allRef[i]];
+        // get pict in array
+        face.src = cardsOfLord[allRef[i]];
 
-            card.appendChild(face)
-            frame.appendChild(card);
-            theme.appendChild(frame);
+        card.appendChild(face)
+        frame.appendChild(card);
+        card.appendChild(verso);
+        theme.appendChild(frame);
+    }
 
-        }
+    // get cards
+    let card = document.getElementsByClassName('Mix');
+    console.log(card);
+    let verso = document.getElementsByClassName('verso');
+    console.log(verso);
 
+    // two times
+    let test = 0;
+    for (let i = 0; i < card.length; i++) {
+        verso[i].addEventListener('click', function () {
+
+            switch (test) {
+                case 0 :
+                    verso[i].style.display = 'none';
+                    ref = i;
+                    test = 1;
+                    console.log(test);
+                    break;
+                case 1 :
+                    verso[i].style.display = 'none';
+                    test = 0;
+                    if(allRef[i] !== allRef[ref]){
+                        setTimeout(function (){
+                            verso[ref].style.display = 'unset';
+                            verso[i].style.display = 'unset';
+                        }, 500);
+                    }
+                    else {
+                        console.log('trouvée !');
+
+                    }
+
+                    console.log(test);
+                    console.log("case : " + allRef[i], "case : " + allRef[ref]);
+                    break;
+            }
+
+        });
+
+    }
 })
+
+// todo addEventListener(restart)
+// document.getElementById("switchRestart").addEventListener('click', function (){
+//
+//     let screen2 = document.getElementsByTagName('div');
+//
+//     document.getElementById('choice').style.display = 'unset';
+// });
