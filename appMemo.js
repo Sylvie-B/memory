@@ -20,6 +20,9 @@ import {Theme} from './modMem.js';
 let gameBoard = document.getElementById('game');
 gameBoard.style.height = window.innerHeight + 'px';
 
+// tab max
+let ref = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+
 let theme = document.getElementById('theme');
 
 // create theme lord    array of caracters + new theme + call
@@ -63,24 +66,34 @@ start.addEventListener('click', function (){
     start.id = 'switchRestart';
     // todo addEventListener(restart)
 
+    // array choiceN
+    let newRef = ref.splice(0, choiceN);
+    let allRef = newRef.concat(newRef);
+    console.log(allRef);
+
+    for(let i = 0 ; i < allRef.length ; i++){
+        let r = Math.floor(Math.random() * i);
+        let stock = allRef[i];
+        allRef[i] = allRef[r];
+        allRef[r] = stock;
+    }
+    console.log(allRef);
 
 
-    // choiceN loop * 2
-    for(let t = 0 ; t < 2 ; t++){
-        for(let i = 0; i < choiceN ; i++){
+    // allRef loop
+        for(let i = 0; i < allRef.length ; i++){
             let frame = document.createElement('div');
             let card = document.createElement('div');
             card.className = 'toMix'
             let face = document.createElement('img');
 
             // get pict in array
-            face.src = cardsOfLord[i]
+            face.src = cardsOfLord[allRef[i]];
 
             card.appendChild(face)
             frame.appendChild(card);
             theme.appendChild(frame);
-        }
-    }
 
+        }
 
 })
