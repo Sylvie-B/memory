@@ -10,8 +10,10 @@ let Theme = function (title){
         let card = document.createElement('div');
         card.className = 'screen1';
         card.style.display = "flex";
+
         let pict = document.createElement('img');
         pict.src = verso;
+
         let frame = document.getElementById(target);
         frame.appendChild(card);
         card.appendChild(pict);

@@ -13,37 +13,35 @@ body {
     width: 100%;
 }
 
-#game {
+#container {
     font-size: 2vw;
     padding: 1vh 1vw;
     background-color: darkcyan;
     background-size: cover;
     background-repeat: no-repeat;
-
 }
 
-#game, #display {
+#container, #display {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
-#memo, #start {
+#memo, #controls {
     background: black;
     margin: 1vh 1vw;
     color: white;
     text-align: center;
 }
 
-#theme, #start {
+#board, #theme, #controls {
     padding: 1vh 1vw;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-
 }
 
-#theme div {
+#board div {
     margin: 1rem 1rem;
     width: 18rem;
     min-height: 25rem;
@@ -54,4 +52,8 @@ button, input, #choiceT {
     margin: 0.5vw;
     padding: 2px;
     font-size: 2vw;
+}
+
+#restart {
+    display: none;
 }
