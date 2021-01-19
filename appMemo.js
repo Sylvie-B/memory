@@ -2,7 +2,7 @@ import {Theme} from './modMem.js';
 
 /** listen start
  *
- *  if choiceN input > 2 < 10
+ *  if choiceN input > 2 & < 10
  *
  * adapt the title
  * create cards in #choice
@@ -43,6 +43,10 @@ let cardsOfLord = [
     'theme/lordOfRings/sam.png'
 ];
 
+let appearance = [
+    'url("theme/lordOfRings/middleEarth.jpg")',
+]
+
 let Select = new Theme("Lord of memory");
 Select.setTheme("theme/lordOfRings/jrrT.png", 'Lord', 'theme');
 
@@ -50,23 +54,30 @@ Select.setTheme("theme/lordOfRings/jrrT.png", 'Lord', 'theme');
 let start = document.getElementById('start');
 let restart = document.getElementById('restart');
 
-
-
 start.addEventListener('click', function () {
-    // todo check user input
-    // if choiceN input > 2 < 10
-
-    // switch button
-    start.style.display = 'none';
-    restart.style.display = 'block';
-
-    // get choices
-    let choiceT = document.getElementById('choiceT').value;
+    // check user input
     let choiceN = document.getElementById('choiceN').value;
-    console.log(choiceN);
+    if(choiceN >=2 && choiceN <=10){
 
-    // todo adapt decoration for theme choice
-    Select.decor('url("theme/lordOfRings/middleEarth.jpg")', 'container', 'newTitle');
+        // switch button
+        start.style.display = 'none';
+        restart.style.display = 'block';
+        // start function
+
+        // get choices
+        let choiceT = document.getElementById('choiceT').value;
+
+        // todo adapt decoration for theme choice
+
+        Select.decor(appearance[0], 'container', 'newTitle');
+
+    }
+    else {
+        alert ('entrez un choix valide');
+    }
+
+
+
 
     //  hidden choices screen
     document.getElementById('choice').style.display = 'none';
@@ -102,7 +113,7 @@ start.addEventListener('click', function () {
         let card = document.createElement('div');
         card.className = 'card';
 
-        // adapt width in function of choiceN
+        // adapt card/img width in function of choiceN
         // total width / racine of total number of cards
         // let deno = Math.ceil(Math.sqrt(parseInt(choiceN) * 2))  ;
         // card.style.width = window.innerWidth / deno + 'px';
@@ -110,9 +121,6 @@ start.addEventListener('click', function () {
         // with img
         let verso = document.createElement('img');
         verso.src = 'theme/lordOfRings/jrrT.png'
-
-
-        // let verso = document.createElement('div');
         verso.className = 'verso';
         verso.style.position = 'absolute';
         verso.style.top = '0';
