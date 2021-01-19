@@ -49,7 +49,6 @@ let start = document.getElementById('start');
 let restart = document.getElementById('restart');
 
 start.addEventListener('click', function () {
-    board.style.display = 'flex';
 
     // switch button
     start.style.display = 'none';
@@ -58,6 +57,7 @@ start.addEventListener('click', function () {
     // get choices
     let choiceT = document.getElementById('choiceT').value;
     let choiceN = document.getElementById('choiceN').value;
+    console.log(choiceN);
 
     // todo adapt decoration for theme choice
     Lord.decor('url("theme/lordOfRings/middleEarth.jpg")', 'container', 'newTitle');
@@ -77,6 +77,8 @@ start.addEventListener('click', function () {
     }
 
     // allRef loop
+    let deno = Math.ceil(Math.sqrt(parseInt(choiceN) * 2)) ;
+    console.log(deno);
     for (let i = 0; i < allRef.length; i++) {
 
         // container of cards recto / verso
@@ -84,15 +86,20 @@ start.addEventListener('click', function () {
         frame.style.position = 'relative';
         frame.className = 'tempo';
 
+        // todo ????
+
+        frame.style.width = window.innerWidth / deno + 'px';
+        frame.style.border = 'dashed 1px black';
+
         // face cards
         let face = document.createElement('img');
+
         // get pict in array
         face.src = cardsOfLord[allRef[i]];
 
-
         // verso cards
         let card = document.createElement('div');
-        card.className = 'Mix';
+        card.className = 'recto';
         let verso = document.createElement('div');
         verso.className = 'verso';
         verso.style.position = 'absolute';
@@ -109,7 +116,7 @@ start.addEventListener('click', function () {
     }
 
     // get cards
-    let card = document.getElementsByClassName('Mix');
+    let card = document.getElementsByClassName('recto');
     console.log(card);
     let verso = document.getElementsByClassName('verso');
     console.log(verso);
@@ -118,16 +125,13 @@ start.addEventListener('click', function () {
     let test = 0;
     for (let i = 0; i < card.length; i++) {
         verso[i].addEventListener('click', function () {
-
+            verso[i].style.display = 'none';
             switch (test) {
                 case 0 :
-                    verso[i].style.display = 'none';
                     ref = i;
                     test = 1;
-                    console.log(test);
                     break;
                 case 1 :
-                    verso[i].style.display = 'none';
                     test = 0;
                     if(allRef[i] !== allRef[ref]){
                         setTimeout(function (){
@@ -139,9 +143,6 @@ start.addEventListener('click', function () {
                         console.log('trouvée !');
 
                     }
-
-                    console.log(test);
-                    console.log("case : " + allRef[i], "case : " + allRef[ref]);
                     break;
             }
         });
@@ -149,14 +150,4 @@ start.addEventListener('click', function () {
 });
 
 // todo addEventListener(restart)
-restart.addEventListener('click', function (){
-    // switch button
-    start.style.display = 'block';
-    restart.style.display = 'none';
 
-
-
-    document.getElementById('choice').style.display = 'block';
-    container.style.backgroundImage = 'none';
-    board.style.display = 'none';
-});
