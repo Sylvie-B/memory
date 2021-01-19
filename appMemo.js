@@ -26,10 +26,12 @@ let display = document.getElementById('display');
 
 let theme = document.getElementById('theme');
 
+/** CREATE A THEME */
+
 // tab max
 let ref = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-// create theme lord    array of caracters + new theme + call
+// create theme lord array of caracters
 let cardsOfLord = [
     'theme/lordOfRings/aragorn.png',
     'theme/lordOfRings/boromir.png',
@@ -45,8 +47,11 @@ let cardsOfLord = [
 
 let appearance = [
     'url("theme/lordOfRings/middleEarth.jpg")',
+    "theme/lordOfRings/jrrT.png",
+    'Lord'
 ]
 
+/** CALL OBJECT */
 let Select = new Theme("Lord of memory");
 Select.setTheme("theme/lordOfRings/jrrT.png", 'Lord', 'theme');
 
@@ -75,9 +80,6 @@ start.addEventListener('click', function () {
     else {
         alert ('entrez un choix valide');
     }
-
-
-
 
     //  hidden choices screen
     document.getElementById('choice').style.display = 'none';

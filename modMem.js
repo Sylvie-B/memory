@@ -11,19 +11,21 @@ let Theme = function (title){
         let card = document.createElement('div');
         card.className = 'screen1';
         card.style.display = "flex";
+
         // affect a back image
         let pict = document.createElement('img');
         pict.src = verso;
+
         // place in the screen
         let frame = document.getElementById(target);
         frame.appendChild(card);
         card.appendChild(pict);
+
         // add name on choice
         let choice = document.createElement('option');
         choice.value = valueT;
         choice.innerHTML = this.name;
         document.getElementById('choiceT').appendChild(choice);
-
 
     }
 
