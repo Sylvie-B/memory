@@ -83,7 +83,7 @@ start.addEventListener('click', function () {
     }
 
     // allRef loop
-    // let deno = Math.ceil(Math.sqrt(parseInt(choiceN) * 2)) ;
+
     // console.log(deno);
     for (let i = 0; i < allRef.length; i++) {
 
@@ -91,11 +91,6 @@ start.addEventListener('click', function () {
         let frame = document.createElement('div');
         frame.style.position = 'relative';
         frame.className = 'tempo';
-
-        // todo ????
-
-        // frame.style.width = window.innerWidth / deno + 'px';
-        // frame.style.border = 'dashed 1px black';
 
         // face cards
         let recto = document.createElement('img');
@@ -107,9 +102,15 @@ start.addEventListener('click', function () {
         let card = document.createElement('div');
         card.className = 'card';
 
+        // adapt width in function of choiceN
+        // total width / racine of total number of cards
+        // let deno = Math.ceil(Math.sqrt(parseInt(choiceN) * 2))  ;
+        // card.style.width = window.innerWidth / deno + 'px';
+
         // with img
         let verso = document.createElement('img');
         verso.src = 'theme/lordOfRings/jrrT.png'
+
 
         // let verso = document.createElement('div');
         verso.className = 'verso';
