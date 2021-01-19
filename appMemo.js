@@ -41,8 +41,8 @@ let cardsOfLord = [
     'theme/lordOfRings/sam.png'
 ];
 
-let Lord = new Theme("Lord of memory");
-Lord.setTheme("theme/lordOfRings/jrrT.png", 'Lord', 'theme');
+let Select = new Theme("Lord of memory");
+Select.setTheme("theme/lordOfRings/jrrT.png", 'Lord', 'theme');
 
 // start / restart
 let start = document.getElementById('start');
@@ -60,7 +60,7 @@ start.addEventListener('click', function () {
     console.log(choiceN);
 
     // todo adapt decoration for theme choice
-    Lord.decor('url("theme/lordOfRings/middleEarth.jpg")', 'container', 'newTitle');
+    Select.decor('url("theme/lordOfRings/middleEarth.jpg")', 'container', 'newTitle');
 
     //  hidden choices screen
     document.getElementById('choice').style.display = 'none';
