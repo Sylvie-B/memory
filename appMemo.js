@@ -1,6 +1,8 @@
 import {Theme} from './modMem.js';
 
-/** listen choices
+/** listen start
+ *
+ *  if choiceN input > 2 < 10
  *
  * adapt the title
  * create cards in #choice
@@ -48,7 +50,11 @@ Select.setTheme("theme/lordOfRings/jrrT.png", 'Lord', 'theme');
 let start = document.getElementById('start');
 let restart = document.getElementById('restart');
 
+
+
 start.addEventListener('click', function () {
+    // todo check user input
+    // if choiceN input > 2 < 10
 
     // switch button
     start.style.display = 'none';
@@ -77,8 +83,8 @@ start.addEventListener('click', function () {
     }
 
     // allRef loop
-    let deno = Math.ceil(Math.sqrt(parseInt(choiceN) * 2)) ;
-    console.log(deno);
+    // let deno = Math.ceil(Math.sqrt(parseInt(choiceN) * 2)) ;
+    // console.log(deno);
     for (let i = 0; i < allRef.length; i++) {
 
         // container of cards recto / verso
@@ -88,48 +94,53 @@ start.addEventListener('click', function () {
 
         // todo ????
 
-        frame.style.width = window.innerWidth / deno + 'px';
-        frame.style.border = 'dashed 1px black';
+        // frame.style.width = window.innerWidth / deno + 'px';
+        // frame.style.border = 'dashed 1px black';
 
         // face cards
-        let face = document.createElement('img');
+        let recto = document.createElement('img');
 
         // get pict in array
-        face.src = cardsOfLord[allRef[i]];
+        recto.src = cardsOfLord[allRef[i]];
 
         // verso cards
         let card = document.createElement('div');
-        card.className = 'recto';
-        let verso = document.createElement('div');
+        card.className = 'card';
+
+        // with img
+        let verso = document.createElement('img');
+        verso.src = 'theme/lordOfRings/jrrT.png'
+
+        // let verso = document.createElement('div');
         verso.className = 'verso';
         verso.style.position = 'absolute';
         verso.style.top = '0';
         verso.style.left = '0';
-        verso.style.backgroundImage = "url('theme/lordOfRings/jrrT.png')";
-        verso.style.backgroundSize = 'cover';
 
+        // div frame in board
         board.appendChild(frame);
+        // div card in frame
         frame.appendChild(card);
-        card.appendChild(face)
+        // img recto & verso in card
+        card.appendChild(recto)
         card.appendChild(verso);
 
     }
 
     // get cards
-    let card = document.getElementsByClassName('recto');
-    console.log(card);
     let verso = document.getElementsByClassName('verso');
     console.log(verso);
 
     // two times
     let test = 0;
-    for (let i = 0; i < card.length; i++) {
-        verso[i].addEventListener('click', function () {
-            verso[i].style.display = 'none';
+    for (let i = 0; i < verso.length; i++) {
+        verso[i].addEventListener('click', function () {  // when click on verso
+
+            verso[i].style.display = 'none';            // hidden verso
             switch (test) {
                 case 0 :
-                    ref = i;
-                    test = 1;
+                    ref = i;                            // stock item value
+                    test ++;                           //
                     break;
                 case 1 :
                     test = 0;
@@ -145,6 +156,7 @@ start.addEventListener('click', function () {
                     }
                     break;
             }
+            // sinon
         });
     }
 });
