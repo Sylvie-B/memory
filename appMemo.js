@@ -1,10 +1,5 @@
 import {Theme} from './modMem.js';
 
-/**
- * time
- * restart
- */
-
 // setting end game modal window
 let modalWin = document.getElementById('modalWin');
 modalWin.style.width = innerWidth + 'px';
@@ -16,6 +11,8 @@ info.style.width = innerWidth/2 + 'px';
 info.style.height = innerHeight/2 + 'px';
 
 let txtInfo = document.getElementById('txtInfo');
+
+let end = document.getElementById('end');
 
 // tab max
 let ref = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -92,7 +89,10 @@ start.addEventListener('click', function () {
             }
         }
         // todo mix newRef before splice
+
+        mix(arrayGlobal);
         let newRef = ref.splice(0, choiceN);
+
         let allRef = newRef.concat(newRef);
         // mix order of img
         mix(allRef);
@@ -106,10 +106,10 @@ start.addEventListener('click', function () {
             card.style.position = 'relative';
 
             // img width
-            let refSize = '20vw';
+            let refSize = choiceN > 4 ? 10 : 18;
 
             let recto = document.createElement('img');
-            // size
+
             recto.style.width = refSize;
             // get img in array
             recto.src = arrayGlobal[allRef[i]];
@@ -137,7 +137,7 @@ start.addEventListener('click', function () {
         /**  listen cards   **/
         // get cards
         let verso = document.getElementsByClassName('verso');
-        let cards = document.getElementsByClassName('card');
+
         // todo change verso class ?
         let score = 0;
         let test = 0;
@@ -167,8 +167,9 @@ start.addEventListener('click', function () {
                                     // modal window
                                     modalWin.style.display = 'flex';
                                     txtInfo.innerHTML += 'vous avez gagné !';
-                                    console.log(score);
-                                    console.log(choiceN);
+                                    end.addEventListener('click', function (){
+                                        document.location.reload();
+                                    })
                                 }
                             }
                             break;
@@ -186,4 +187,4 @@ start.addEventListener('click', function () {
 // todo addEventListener(restart)
 
 let restart = document.getElementById('restart');
-
+restart.addEventListener("click",()=> document.location.reload());
