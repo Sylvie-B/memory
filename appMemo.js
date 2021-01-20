@@ -1,5 +1,6 @@
 import {Theme} from './modMem.js';
-
+import {ModWin} from "./modalWin";
+let endGame = new ModWin('rgb(255 177 0 / 50%)', 'white');
 /**
  * try
  * time
@@ -144,11 +145,10 @@ start.addEventListener('click', function () {
                                 score++;
                                 if(score === parseInt(choiceN)){
                                     // modal window
+
                                 }
                             }
                             break;
-                        default:
-                            alert ('du calme !');
                     }
                 }
                 // sinon
