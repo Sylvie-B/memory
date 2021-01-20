@@ -25,6 +25,7 @@ let container = document.getElementById('container');
 container.style.height = window.innerHeight + 'px';
 
 let board = document.getElementById('board');
+board.style.height = innerHeight * 0.8 + 'px';
 
 // get start & restart buttton
 let start = document.getElementById('start');
@@ -68,7 +69,7 @@ start.addEventListener('click', function () {
     let choiceN = parseInt(document.getElementById('choiceN').value);
 
     if (choiceN > 1 && choiceN < 11) {
-        // todo timer
+
 
         // switch button
         start.style.display = 'none';
@@ -76,6 +77,8 @@ start.addEventListener('click', function () {
 
         //  hidden choices screen
         document.getElementById('choice').style.display = 'none';
+        // no hidden game screen
+        board.style.display = 'flex';
 
         /** new screen **/
 
@@ -113,7 +116,17 @@ start.addEventListener('click', function () {
             card.style.position = 'relative';
 
             // img width
-            let refSize = choiceN < 5 ? 18 : choiceN < 6 ? 15 : choiceN < 10 ? 12 : 10;
+            console.log(innerWidth);
+            let refSize;
+
+
+
+            if(innerWidth > 600){
+                refSize = choiceN < 5 ? 18 : choiceN < 6 ? 15 : choiceN < 10 ? 12 : 10;
+            }
+            else{
+                refSize = choiceN < 5 ? 26 : choiceN < 7 ? 24 : 19;
+            }
 
             let recto = document.createElement('img');
 
@@ -191,3 +204,4 @@ start.addEventListener('click', function () {
 restart.addEventListener("click",()=> document.location.reload());
 
 //todo loose way
+// todo timer

@@ -57,7 +57,16 @@ body {
     text-align: center;
 }
 
-#board, #theme, #controls {
+#board {
+    display: none;
+}
+
+#board {
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#theme, #controls {
     padding: 1vh 1vw;
     display: flex;
     flex-wrap: wrap;
@@ -85,6 +94,16 @@ button, input, #choiceT, #choice {
     display: none;
 }
 
-@media screen and (max-width: 600px){
-
+@media screen and (max-width: 600px) {
+ /*screen 1*/
+    #newTitle {
+        font-size: 6vw;
+    }
+/*screen game */
+    #board {
+        flex-wrap: wrap;
+        justify-content: stretch;
+        align-items: center;
+    }
 }
+
