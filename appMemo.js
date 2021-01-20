@@ -1,11 +1,19 @@
 import {Theme} from './modMem.js';
-import {ModWin} from './modalWin';
-let endGame = new ModWin('rgb(255 177 0 / 50%)', 'white');
+
 /**
- * try
  * time
  * restart
  */
+
+// setting end game modal window
+let modalWin = document.getElementById('modalWin');
+modalWin.style.width = innerWidth + 'px';
+modalWin.style.height = innerHeight + 'px';
+modalWin.style.display = 'none';
+
+let info = document.getElementById('info');
+info.style.width = innerWidth/2 + 'px';
+info.style.height = innerHeight/2 + 'px';
 
 // tab max
 let ref = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -22,7 +30,7 @@ let start = document.getElementById('start');
 /** THEME **/
 // for next theme continue the array
 // lord array of caracters img
-let cardsOfLord = [
+let arrayGlobal = [
     'theme/lordOfRings/aragorn.png',
     'theme/lordOfRings/boromir.png',
     'theme/lordOfRings/eye.png',
@@ -36,7 +44,7 @@ let cardsOfLord = [
 ];
 
 // background - back card - valueT
-let lordView = [
+let themeView = [
     'url("theme/lordOfRings/middleEarth.jpg")',
     'Lord',
     "theme/lordOfRings/jrrT.png"
@@ -48,13 +56,13 @@ let lordView = [
 // case hp
 let Select = new Theme("Lord of memory");
 
-Select.setTheme(lordView[2], lordView[1], 'theme');
+Select.setTheme(themeView[2], themeView[1], 'theme');
 
 /** listen start button **/
 start.addEventListener('click', function () {
 
     //check user choiceN value
-    let choiceN = document.getElementById('choiceN').value;
+    let choiceN = parseInt(document.getElementById('choiceN').value);
 
     if (choiceN > 1 && choiceN < 11) {
         // todo timer
@@ -70,7 +78,7 @@ start.addEventListener('click', function () {
         // let choiceT = document.getElementById('choiceT').value;
         // todo adapt decoration for theme choice
 
-        Select.decor(lordView, 'container', 'newTitle');
+        Select.decor(themeView, 'container', 'newTitle');
 
         // array choiceN --> object methode ?
         // todo mix newRef before splice
@@ -94,13 +102,13 @@ start.addEventListener('click', function () {
 
             let recto = document.createElement('img');
             // get img in array
-            recto.src = cardsOfLord[allRef[i]];
+            recto.src = arrayGlobal[allRef[i]];
 
             /** adapt img width in function of choiceN **/
 
                 // verso cards
             let verso = document.createElement('img');
-            verso.src = lordView[2];
+            verso.src = themeView[2];
             verso.className = 'verso';
             verso.style.position = 'absolute';
             verso.style.top = '0';
@@ -120,7 +128,7 @@ start.addEventListener('click', function () {
         // todo change verso class ?
         let score = 0;
         let test = 0;
-        for (let i = 0; i < cards.length; i++) {
+        for (let i = 0; i < verso.length; i++) {
             verso[i].addEventListener('click', function () {
                 // when click on verso
                 if (test < 2) {
@@ -141,11 +149,13 @@ start.addEventListener('click', function () {
                                 }, 500);
                             }
                             else {
-                                console.log('trouvé');
-                                score++;
-                                if(score === parseInt(choiceN)){
+                                ++score;
+                                if(score === choiceN){
                                     // modal window
-
+                                    modalWin.style.display = 'flex';
+                                    info.innerHTML = 'vous avez gagné !';
+                                    console.log(score);
+                                    console.log(choiceN);
                                 }
                             }
                             break;
