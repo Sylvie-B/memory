@@ -1,20 +1,13 @@
 import {Theme} from './modMem.js';
 
-/** listen start
- *
- *  if choiceN input > 2 & < 10
- *
- * adapt the title
- * create cards in #choice
- * create start button in #level
- *
- * when start
- * display :
- * nbr of cards
+/**
  * try
  * time
  * restart
  */
+
+// tab max
+let ref = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 // get window
 let container = document.getElementById('container');
@@ -22,16 +15,12 @@ container.style.height = window.innerHeight + 'px';
 
 let board = document.getElementById('board');
 
-let display = document.getElementById('display');
+// get start buttton
+let start = document.getElementById('start');
 
-let theme = document.getElementById('theme');
-
-/** CREATE A THEME */
-
-// tab max
-let ref = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-
-// create theme lord array of caracters
+/** THEME **/
+// for next theme continue the array
+// lord array of caracters img
 let cardsOfLord = [
     'theme/lordOfRings/aragorn.png',
     'theme/lordOfRings/boromir.png',
@@ -45,132 +34,130 @@ let cardsOfLord = [
     'theme/lordOfRings/sam.png'
 ];
 
-let appearance = [
+// background - back card - valueT
+let lordView = [
     'url("theme/lordOfRings/middleEarth.jpg")',
-    "theme/lordOfRings/jrrT.png",
-    'Lord'
+    'Lord',
+    "theme/lordOfRings/jrrT.png"
 ]
 
-/** CALL OBJECT */
+/** CALL SELECT OBJECT **/
+// switch
+// case lord
+// case hp
 let Select = new Theme("Lord of memory");
-Select.setTheme("theme/lordOfRings/jrrT.png", 'Lord', 'theme');
 
-// start / restart
-let start = document.getElementById('start');
-let restart = document.getElementById('restart');
+Select.setTheme(lordView[2], lordView[1], 'theme');
 
+/** listen start button **/
 start.addEventListener('click', function () {
-    // check user input
-    let choiceN = document.getElementById('choiceN').value;
-    if(choiceN >=2 && choiceN <=10){
 
+    //check user choiceN value
+    let choiceN = document.getElementById('choiceN').value;
+
+    if (choiceN > 1 && choiceN < 11) {
+        // todo timer
         // switch button
         start.style.display = 'none';
         restart.style.display = 'block';
-        // start function
+        //  hidden choices screen
+        document.getElementById('choice').style.display = 'none';
 
-        // get choices
-        let choiceT = document.getElementById('choiceT').value;
+        /** new screen **/
 
+        // todo get choices adapt view
+        // let choiceT = document.getElementById('choiceT').value;
         // todo adapt decoration for theme choice
 
-        Select.decor(appearance[0], 'container', 'newTitle');
+        Select.decor(lordView, 'container', 'newTitle');
 
+        // array choiceN --> object methode ?
+        // todo mix newRef before splice
+        let newRef = ref.splice(0, choiceN);
+        let allRef = newRef.concat(newRef);
+        // mix order of img
+        for (let i = 0; i < allRef.length; i++) {
+            let r = Math.floor(Math.random() * i);
+            let stock = allRef[i];
+            allRef[i] = allRef[r];
+            allRef[r] = stock;
+        }
+
+        // allRef loop to create cards
+        for (let i = 0; i < allRef.length; i++) {
+
+            // div card for recto & verso
+            let card = document.createElement('div');
+            card.className = 'card';
+            card.style.position = 'relative';
+
+            let recto = document.createElement('img');
+            // get img in array
+            recto.src = cardsOfLord[allRef[i]];
+
+            /** adapt img width in function of choiceN **/
+
+                // verso cards
+            let verso = document.createElement('img');
+            verso.src = lordView[2];
+            verso.className = 'verso';
+            verso.style.position = 'absolute';
+            verso.style.top = '0';
+            verso.style.left = '0';
+
+            // div card in board
+            board.appendChild(card);
+            // img recto & verso in card
+            card.appendChild(recto)
+            card.appendChild(verso);
+
+        }
+        /**  listen cards   **/
+        // get cards
+        let verso = document.getElementsByClassName('verso');
+        let cards = document.getElementsByClassName('card');
+        // todo change verso class ?
+        let score = 0;
+        let test = 0;
+        for (let i = 0; i < cards.length; i++) {
+            verso[i].addEventListener('click', function () {
+                // when click on verso
+                if (test < 2) {
+                    console.log("if : " + test);
+                    switch (test) {
+                        case 0 :
+                            verso[i].style.display = 'none';            // hidden verso
+                            ref = i;                            // stock item value
+                            test ++;
+                            break;
+                        case 1 :
+                            verso[i].style.display = 'none';            // hidden verso
+                            test --;
+                            console.log("test -- : " + test);
+                            if(allRef[i] !== allRef[ref]){
+                                setTimeout(function (){
+                                    verso[ref].style.display = 'unset';
+                                    verso[i].style.display = 'unset';
+                                }, 500);
+                            }
+                            else {
+                                // todo function find
+
+                            }
+                            break;
+                        default:
+                            alert ('du calme !');
+                    }
+                }
+                // sinon
+            });
+        }
     }
     else {
-        alert ('entrez un choix valide');
+        alert('entrez un choix valide');
     }
-
-    //  hidden choices screen
-    document.getElementById('choice').style.display = 'none';
-
-    // array choiceN
-    let newRef = ref.splice(0, choiceN);
-    let allRef = newRef.concat(newRef);
-
-    for (let i = 0; i < allRef.length; i++) {
-        let r = Math.floor(Math.random() * i);
-        let stock = allRef[i];
-        allRef[i] = allRef[r];
-        allRef[r] = stock;
-    }
-
-    // allRef loop
-
-    // console.log(deno);
-    for (let i = 0; i < allRef.length; i++) {
-
-        // container of cards recto / verso
-        let frame = document.createElement('div');
-        frame.style.position = 'relative';
-        frame.className = 'tempo';
-
-        // face cards
-        let recto = document.createElement('img');
-
-        // get pict in array
-        recto.src = cardsOfLord[allRef[i]];
-
-        // verso cards
-        let card = document.createElement('div');
-        card.className = 'card';
-
-        // adapt card/img width in function of choiceN
-        // total width / racine of total number of cards
-        // let deno = Math.ceil(Math.sqrt(parseInt(choiceN) * 2))  ;
-        // card.style.width = window.innerWidth / deno + 'px';
-
-        // with img
-        let verso = document.createElement('img');
-        verso.src = 'theme/lordOfRings/jrrT.png'
-        verso.className = 'verso';
-        verso.style.position = 'absolute';
-        verso.style.top = '0';
-        verso.style.left = '0';
-
-        // div frame in board
-        board.appendChild(frame);
-        // div card in frame
-        frame.appendChild(card);
-        // img recto & verso in card
-        card.appendChild(recto)
-        card.appendChild(verso);
-
-    }
-
-    // get cards
-    let verso = document.getElementsByClassName('verso');
-    console.log(verso);
-
-    // two times
-    let test = 0;
-    for (let i = 0; i < verso.length; i++) {
-        verso[i].addEventListener('click', function () {  // when click on verso
-
-            verso[i].style.display = 'none';            // hidden verso
-            switch (test) {
-                case 0 :
-                    ref = i;                            // stock item value
-                    test ++;                           //
-                    break;
-                case 1 :
-                    test = 0;
-                    if(allRef[i] !== allRef[ref]){
-                        setTimeout(function (){
-                            verso[ref].style.display = 'unset';
-                            verso[i].style.display = 'unset';
-                        }, 500);
-                    }
-                    else {
-                        console.log('trouvée !');
-
-                    }
-                    break;
-            }
-            // sinon
-        });
-    }
-});
+})
 
 // todo addEventListener(restart)
 
+let restart = document.getElementById('restart');
