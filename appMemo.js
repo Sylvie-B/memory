@@ -70,7 +70,6 @@ start.addEventListener('click', function () {
 
     if (choiceN > 1 && choiceN < 11) {
 
-
         // switch button
         start.style.display = 'none';
         restart.style.display = 'block';
@@ -82,11 +81,9 @@ start.addEventListener('click', function () {
 
         /** new screen **/
 
-        Select.decor(themeView, 'container', 'newTitle');
+        Select.decor(themeView[0], 'container', 'newTitle');
 
         let timer = setTimeout(function (){
-
-
 
         }, 10000);
 
@@ -119,14 +116,17 @@ start.addEventListener('click', function () {
             console.log(innerWidth);
             let refSize;
 
-
-
-            if(innerWidth > 600){
+            // choiceN < 10 ? 24 : 19;
+            if(innerWidth < 351){
+                refSize = choiceN < 5 ? 26 : choiceN < 7 ? 24 : 18;
+            }
+            // else if(innerWidth < 601){
+            //     refSize = choiceN < 5 ? 26 : choiceN < 7 ? 24 : 19;
+            // }
+            else{
                 refSize = choiceN < 5 ? 18 : choiceN < 6 ? 15 : choiceN < 10 ? 12 : 10;
             }
-            else{
-                refSize = choiceN < 5 ? 26 : choiceN < 7 ? 24 : 19;
-            }
+
 
             let recto = document.createElement('img');
 
@@ -205,3 +205,4 @@ restart.addEventListener("click",()=> document.location.reload());
 
 //todo loose way
 // todo timer
+// todo re-setting background theme
