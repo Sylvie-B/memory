@@ -15,6 +15,8 @@ let info = document.getElementById('info');
 info.style.width = innerWidth/2 + 'px';
 info.style.height = innerHeight/2 + 'px';
 
+let txtInfo = document.getElementById('txtInfo');
+
 // tab max
 let ref = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
@@ -81,16 +83,19 @@ start.addEventListener('click', function () {
         Select.decor(themeView, 'container', 'newTitle');
 
         // array choiceN --> object methode ?
+        let mix = function (array){
+            for (let i = 0; i < array.length; i++) {
+                let r = Math.floor(Math.random() * i);
+                let stock = array[i];
+                array[i] = array[r];
+                array[r] = stock;
+            }
+        }
         // todo mix newRef before splice
         let newRef = ref.splice(0, choiceN);
         let allRef = newRef.concat(newRef);
         // mix order of img
-        for (let i = 0; i < allRef.length; i++) {
-            let r = Math.floor(Math.random() * i);
-            let stock = allRef[i];
-            allRef[i] = allRef[r];
-            allRef[r] = stock;
-        }
+        mix(allRef);
 
         // allRef loop to create cards
         for (let i = 0; i < allRef.length; i++) {
@@ -100,7 +105,12 @@ start.addEventListener('click', function () {
             card.className = 'card';
             card.style.position = 'relative';
 
+            // img width
+            let refSize = '20vw';
+
             let recto = document.createElement('img');
+            // size
+            recto.style.width = refSize;
             // get img in array
             recto.src = arrayGlobal[allRef[i]];
 
@@ -108,6 +118,9 @@ start.addEventListener('click', function () {
 
                 // verso cards
             let verso = document.createElement('img');
+            // size
+            verso.style.width = refSize;
+
             verso.src = themeView[2];
             verso.className = 'verso';
             verso.style.position = 'absolute';
@@ -153,7 +166,7 @@ start.addEventListener('click', function () {
                                 if(score === choiceN){
                                     // modal window
                                     modalWin.style.display = 'flex';
-                                    info.innerHTML = 'vous avez gagné !';
+                                    txtInfo.innerHTML += 'vous avez gagné !';
                                     console.log(score);
                                     console.log(choiceN);
                                 }
@@ -173,3 +186,4 @@ start.addEventListener('click', function () {
 // todo addEventListener(restart)
 
 let restart = document.getElementById('restart');
+
