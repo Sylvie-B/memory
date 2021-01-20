@@ -123,7 +123,7 @@ start.addEventListener('click', function () {
             verso[i].addEventListener('click', function () {
                 // when click on verso
                 if (test < 2) {
-                    console.log("if : " + test);
+
                     switch (test) {
                         case 0 :
                             verso[i].style.display = 'none';            // hidden verso
@@ -133,7 +133,6 @@ start.addEventListener('click', function () {
                         case 1 :
                             verso[i].style.display = 'none';            // hidden verso
                             test --;
-                            console.log("test -- : " + test);
                             if(allRef[i] !== allRef[ref]){
                                 setTimeout(function (){
                                     verso[ref].style.display = 'unset';
@@ -141,8 +140,11 @@ start.addEventListener('click', function () {
                                 }, 500);
                             }
                             else {
-                                // todo function find
-
+                                console.log('trouvé');
+                                score++;
+                                if(score === parseInt(choiceN)){
+                                    // modal window
+                                }
                             }
                             break;
                         default:
