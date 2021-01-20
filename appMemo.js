@@ -1,5 +1,5 @@
 import {Theme} from './modMem.js';
-import {ModWin} from "./modalWin";
+import {ModWin} from './modalWin';
 let endGame = new ModWin('rgb(255 177 0 / 50%)', 'white');
 /**
  * try
