@@ -13,8 +13,6 @@ let info = document.getElementById('info');
 info.style.width = innerWidth/2 + 'px';
 info.style.height = innerHeight/2 + 'px';
 
-let txtInfo = document.getElementById('txtInfo');
-
 let end = document.getElementById('end');
 
 // get window
@@ -31,7 +29,7 @@ let restart = document.getElementById('restart');
 /** THEME **/
 // for next theme continue the array
 // lord array of caracters img
-let arrayGlobal = [
+let arrLord = [
     'theme/lordOfRings/aragorn.png',
     'theme/lordOfRings/boromir.png',
     'theme/lordOfRings/eye.png',
@@ -64,12 +62,12 @@ let mix = function (array){
 
 /** CALL SELECT OBJECT **/
 
-let Select = new Theme("Lord of memory");
+let Select = new Theme("Lord of memory", arrLord);
 
 Select.setTheme(themeView[2], themeView[1], 'theme');
 
 // create arrMax
-let arr = Select.arrMax(arrayGlobal);
+let arr = Select.arrMax();
 
 /** listen start button **/
 start.addEventListener('click', function () {
@@ -93,7 +91,7 @@ start.addEventListener('click', function () {
         Select.decor(themeView[0], 'container', 'newTitle');
 
         // random pictures order
-        mix(arrayGlobal);
+        mix(arrLord);
         let newRef = arr.splice(0, choiceN);
 
         let dblArr = newRef.concat(newRef);
@@ -127,7 +125,7 @@ start.addEventListener('click', function () {
 
             recto.style.width = refSize + 'vw';
             // get img in array
-            recto.src = arrayGlobal[dblArr[i]];
+            recto.src = arrLord[dblArr[i]];
 
             /** adapt img width in function of choiceN **/
 
@@ -152,8 +150,9 @@ start.addEventListener('click', function () {
         /**  listen cards   **/
         // get cards
         let verso = document.getElementsByClassName('verso');
+        let score = document.getElementById('score');
         let stock;
-        let score = 0;
+        let count = 0;
         let test = 0;
         for (let i = 0; i < verso.length; i++) {
             verso[i].addEventListener('mouseup', function () {
@@ -175,13 +174,12 @@ start.addEventListener('click', function () {
                                 }, 500);
                             }
                             else {
-                                ++score;
-                                if(score === choiceN){
+                                ++count;
+                                if(count === choiceN){
                                     // modal window
                                     modalWin.style.display = 'flex';
                                     info.style.backgroundImage = themeView[3];
-                                    // info.style.backgroundSize = 'cover';
-                                    txtInfo.innerHTML += 'Vous avez gagné !';
+                                    score.innerHTML = 'votre score est de ' + count * 2;
                                     end.addEventListener('click', function (){
                                         document.location.reload();
                                     })
