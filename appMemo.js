@@ -1,5 +1,5 @@
 import {Theme} from './modMem.js';
-// setting screen 1
+// setting first screen
 let choice = document.getElementById('choice');
 choice.style.height = innerHeight * 0.7 + 'px';
 
@@ -16,9 +16,6 @@ info.style.height = innerHeight/2 + 'px';
 let txtInfo = document.getElementById('txtInfo');
 
 let end = document.getElementById('end');
-
-// tab max
-let ref = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 // get window
 let container = document.getElementById('container');
@@ -51,16 +48,28 @@ let arrayGlobal = [
 let themeView = [
     'url("theme/lordOfRings/middleEarth.jpg")',
     'Lord',
-    "theme/lordOfRings/jrrT.png"
+    'theme/lordOfRings/jrrT.png',
+    'url("theme/lordOfRings/oneRing.jpg")'
 ]
 
+// mix function
+let mix = function (array){
+    for (let i = 0; i < array.length; i++) {
+        let r = Math.floor(Math.random() * i);
+        let stock = array[i];
+        array[i] = array[r];
+        array[r] = stock;
+    }
+}
+
 /** CALL SELECT OBJECT **/
-// switch
-// case lord
-// case hp
+
 let Select = new Theme("Lord of memory");
 
 Select.setTheme(themeView[2], themeView[1], 'theme');
+
+// create arrMax
+let arr = Select.arrMax(arrayGlobal);
 
 /** listen start button **/
 start.addEventListener('click', function () {
@@ -83,29 +92,16 @@ start.addEventListener('click', function () {
 
         Select.decor(themeView[0], 'container', 'newTitle');
 
-        let timer = setTimeout(function (){
-
-        }, 10000);
-
-        // array choiceN --> object methode ?
-        let mix = function (array){
-            for (let i = 0; i < array.length; i++) {
-                let r = Math.floor(Math.random() * i);
-                let stock = array[i];
-                array[i] = array[r];
-                array[r] = stock;
-            }
-        }
-
+        // random pictures order
         mix(arrayGlobal);
-        let newRef = ref.splice(0, choiceN);
+        let newRef = arr.splice(0, choiceN);
 
-        let allRef = newRef.concat(newRef);
+        let dblArr = newRef.concat(newRef);
         // mix order of img
-        mix(allRef);
+        mix(dblArr);
 
         // allRef loop to create cards
-        for (let i = 0; i < allRef.length; i++) {
+        for (let i = 0; i < dblArr.length; i++) {
 
             // div card for recto & verso
             let card = document.createElement('div');
@@ -113,7 +109,6 @@ start.addEventListener('click', function () {
             card.style.position = 'relative';
 
             // img width
-            console.log(innerWidth);
             let refSize;
 
             // choiceN < 10 ? 24 : 19;
@@ -132,7 +127,7 @@ start.addEventListener('click', function () {
 
             recto.style.width = refSize + 'vw';
             // get img in array
-            recto.src = arrayGlobal[allRef[i]];
+            recto.src = arrayGlobal[dblArr[i]];
 
             /** adapt img width in function of choiceN **/
 
@@ -157,7 +152,7 @@ start.addEventListener('click', function () {
         /**  listen cards   **/
         // get cards
         let verso = document.getElementsByClassName('verso');
-
+        let stock;
         let score = 0;
         let test = 0;
         for (let i = 0; i < verso.length; i++) {
@@ -167,15 +162,15 @@ start.addEventListener('click', function () {
                     switch (test) {
                         case 0 :
                             verso[i].style.display = 'none';            // hidden verso
-                            ref = i;                            // stock item value
+                            stock = i;                            // stock item value
                             test ++;
                             break;
                         case 1 :
                             verso[i].style.display = 'none';            // hidden verso
                             test --;
-                            if(allRef[i] !== allRef[ref]){
+                            if(dblArr[i] !== dblArr[stock]){
                                 setTimeout(function (){
-                                    verso[ref].style.display = 'unset';
+                                    verso[stock].style.display = 'unset';
                                     verso[i].style.display = 'unset';
                                 }, 500);
                             }
@@ -184,6 +179,8 @@ start.addEventListener('click', function () {
                                 if(score === choiceN){
                                     // modal window
                                     modalWin.style.display = 'flex';
+                                    info.style.backgroundImage = themeView[3];
+                                    // info.style.backgroundSize = 'cover';
                                     txtInfo.innerHTML += 'Vous avez gagné !';
                                     end.addEventListener('click', function (){
                                         document.location.reload();
@@ -202,7 +199,3 @@ start.addEventListener('click', function () {
 })
 
 restart.addEventListener("click",()=> document.location.reload());
-
-//todo loose way
-// todo timer
-// todo re-setting background theme
