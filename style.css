@@ -29,6 +29,7 @@ body {
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
+    font-size: 3vw;
 }
 
 #container {
@@ -46,7 +47,7 @@ body {
 }
 
 #newTitle {
-    font-size: 2vw;
+    font-size: 3vw;
 }
 
 #memo, #controls {
@@ -68,12 +69,22 @@ body {
     justify-content: center;
 }
 
-button, input, #choiceT {
+#choice {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+button, input, #choiceT, #choice {
     margin: 0.5vw;
     padding: 2px;
-    font-size: 2vw;
+    font-size: 2.5vw;
 }
 
 #restart {
     display: none;
+}
+
+@media screen and (max-width: 600px){
+
 }

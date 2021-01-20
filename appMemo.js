@@ -1,4 +1,7 @@
 import {Theme} from './modMem.js';
+// setting screen 1
+let choice = document.getElementById('choice');
+choice.style.height = innerHeight * 0.7 + 'px';
 
 // setting end game modal window
 let modalWin = document.getElementById('modalWin');
@@ -23,8 +26,9 @@ container.style.height = window.innerHeight + 'px';
 
 let board = document.getElementById('board');
 
-// get start buttton
+// get start & restart buttton
 let start = document.getElementById('start');
+let restart = document.getElementById('restart');
 
 /** THEME **/
 // for next theme continue the array
@@ -65,19 +69,23 @@ start.addEventListener('click', function () {
 
     if (choiceN > 1 && choiceN < 11) {
         // todo timer
+
         // switch button
         start.style.display = 'none';
         restart.style.display = 'block';
+
         //  hidden choices screen
         document.getElementById('choice').style.display = 'none';
 
         /** new screen **/
 
-        // todo get choices adapt view
-        // let choiceT = document.getElementById('choiceT').value;
-        // todo adapt decoration for theme choice
-
         Select.decor(themeView, 'container', 'newTitle');
+
+        let timer = setTimeout(function (){
+
+
+
+        }, 10000);
 
         // array choiceN --> object methode ?
         let mix = function (array){
@@ -105,7 +113,7 @@ start.addEventListener('click', function () {
             card.style.position = 'relative';
 
             // img width
-            let refSize = choiceN < 5 ? 18 : choiceN < 7 ? 15 : 12;
+            let refSize = choiceN < 5 ? 18 : choiceN < 6 ? 15 : choiceN < 10 ? 12 : 10;
 
             let recto = document.createElement('img');
 
@@ -137,14 +145,12 @@ start.addEventListener('click', function () {
         // get cards
         let verso = document.getElementsByClassName('verso');
 
-        // todo change verso class ?
         let score = 0;
         let test = 0;
         for (let i = 0; i < verso.length; i++) {
-            verso[i].addEventListener('click', function () {
+            verso[i].addEventListener('mouseup', function () {
                 // when click on verso
                 if (test < 2) {
-
                     switch (test) {
                         case 0 :
                             verso[i].style.display = 'none';            // hidden verso
@@ -165,7 +171,7 @@ start.addEventListener('click', function () {
                                 if(score === choiceN){
                                     // modal window
                                     modalWin.style.display = 'flex';
-                                    txtInfo.innerHTML += 'vous avez gagné !';
+                                    txtInfo.innerHTML += 'Vous avez gagné !';
                                     end.addEventListener('click', function (){
                                         document.location.reload();
                                     })
@@ -174,7 +180,6 @@ start.addEventListener('click', function () {
                             break;
                     }
                 }
-                // sinon
             });
         }
     }
@@ -183,7 +188,6 @@ start.addEventListener('click', function () {
     }
 })
 
-// todo addEventListener(restart)
-
-let restart = document.getElementById('restart');
 restart.addEventListener("click",()=> document.location.reload());
+
+//todo loose way
