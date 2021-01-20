@@ -88,7 +88,6 @@ start.addEventListener('click', function () {
                 array[r] = stock;
             }
         }
-        // todo mix newRef before splice
 
         mix(arrayGlobal);
         let newRef = ref.splice(0, choiceN);
@@ -106,11 +105,11 @@ start.addEventListener('click', function () {
             card.style.position = 'relative';
 
             // img width
-            let refSize = choiceN > 4 ? 10 : 18;
+            let refSize = choiceN < 5 ? 18 : choiceN < 7 ? 15 : 12;
 
             let recto = document.createElement('img');
 
-            recto.style.width = refSize;
+            recto.style.width = refSize + 'vw';
             // get img in array
             recto.src = arrayGlobal[allRef[i]];
 
@@ -119,7 +118,7 @@ start.addEventListener('click', function () {
                 // verso cards
             let verso = document.createElement('img');
             // size
-            verso.style.width = refSize;
+            verso.style.width = refSize + 'vw';
 
             verso.src = themeView[2];
             verso.className = 'verso';

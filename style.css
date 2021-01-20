@@ -32,7 +32,6 @@ body {
 }
 
 #container {
-    font-size: 2vw;
     padding: 1vh 1vw;
     background-color: darkcyan;
 /*  setting new screen  */
@@ -44,6 +43,10 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+#newTitle {
+    font-size: 2vw;
 }
 
 #memo, #controls {
