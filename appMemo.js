@@ -110,16 +110,16 @@ start.addEventListener('click', function () {
             let refSize;
 
             // choiceN < 10 ? 24 : 19;
+
             if(innerWidth < 351){
                 refSize = choiceN < 5 ? 26 : choiceN < 7 ? 24 : 18;
             }
-            // else if(innerWidth < 601){
-            //     refSize = choiceN < 5 ? 26 : choiceN < 7 ? 24 : 19;
-            // }
-            else{
-                refSize = choiceN < 5 ? 18 : choiceN < 6 ? 15 : choiceN < 10 ? 12 : 10;
+            else if(innerWidth < 601){
+                refSize = choiceN < 4 ? 28 : choiceN < 5 ? 26 : choiceN < 7 ? 24 : 19;
             }
-
+            else{
+                refSize = choiceN < 4 ? 20 : choiceN < 5 ? 18 : choiceN < 6 ? 15 : choiceN < 10 ? 12 : 10;
+            }
 
             let recto = document.createElement('img');
 
@@ -179,6 +179,7 @@ start.addEventListener('click', function () {
                                     // modal window
                                     modalWin.style.display = 'flex';
                                     info.style.backgroundImage = themeView[3];
+                                    info.style.backgroundSize = 'cover';
                                     score.innerHTML = 'votre score est de ' + count * 2;
                                     end.addEventListener('click', function (){
                                         document.location.reload();
