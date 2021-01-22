@@ -109,8 +109,6 @@ start.addEventListener('click', function () {
             // img width
             let refSize;
 
-            // choiceN < 10 ? 24 : 19;
-
             if(innerWidth < 351){
                 refSize = choiceN < 5 ? 26 : choiceN < 7 ? 24 : 18;
             }
