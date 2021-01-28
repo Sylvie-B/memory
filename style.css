@@ -96,7 +96,6 @@ button, input, #choiceT, #choice {
     color: orangered;
 }
 
-
 @media screen and (max-width: 800px) {
  /*screen 1*/
     #newTitle {
@@ -124,7 +123,6 @@ button, input, #choiceT, #choice {
     }
     /*screen game */
     #board {
-        flex-direction: column;
         flex-wrap: wrap;
         justify-content: space-around;
         align-items: center;

@@ -20,7 +20,7 @@ let container = document.getElementById('container');
 container.style.height = window.innerHeight + 'px';
 
 let board = document.getElementById('board');
-// board.style.height = innerHeight * 0.9 + 'px';
+board.style.height = innerHeight * 0.9 + 'px';
 
 // get start & restart buttton
 let start = document.getElementById('start');
@@ -74,7 +74,7 @@ start.addEventListener('click', function () {
 
     //check user choiceN value
     let choiceN = parseInt(document.getElementById('choiceN').value);
-    // todo test isnan
+
     if (choiceN > 1 && choiceN < 11) {
 
         // switch button
@@ -113,7 +113,7 @@ start.addEventListener('click', function () {
                 refSize = choiceN < 5 ? 26 : choiceN < 7 ? 24 : 18;
             }
             else if(innerWidth < 601){
-                refSize = choiceN < 4 ? 28 : choiceN < 5 ? 26 : choiceN < 7 ? 24 : 19;
+                refSize = choiceN < 4 ? 28 : choiceN < 5 ? 26 : choiceN < 7 ? 22 : choiceN < 9 ? 19 : 17;
             }
             else{
                 refSize = choiceN < 4 ? 20 : choiceN < 6 ? 18 : choiceN < 10 ? 14 : 12;
