@@ -116,7 +116,7 @@ start.addEventListener('click', function () {
                 refSize = choiceN < 4 ? 28 : choiceN < 5 ? 26 : choiceN < 7 ? 22 : choiceN < 9 ? 19 : 17;
             }
             else{
-                refSize = choiceN < 4 ? 20 : choiceN < 6 ? 18 : choiceN < 10 ? 14 : 12;
+                refSize = choiceN < 7 ? 14 : choiceN < 8 ? 11 : choiceN < 9 ? 10 : 9;
             }
 
             let recto = document.createElement('img');
